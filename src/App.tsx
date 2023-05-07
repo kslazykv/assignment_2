@@ -1,38 +1,44 @@
 import * as React from "react"
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import { ChakraProvider, extendTheme } from "@chakra-ui/react"
+import { SettingsList } from "./SettingsList";
+
+const theme = extendTheme({
+  components: {
+    Switch: {
+      baseStyle: {
+        track: {
+          borderRadius: "full", 
+          borderWidth: "1px", 
+          borderColor: "gray.700", 
+          overflow:'hidden',
+          bg:'#484d53',
+          _checked: {
+            bg: "#457785", 
+          },
+          _active: {
+            borderColor: "white", 
+          },
+          _focus: {
+            borderColor: "white", 
+          },
+        },
+        thumb: {
+          bg: "white", 
+          borderRadius: "full", 
+          transform: 'translate(0%)',
+          _checked: {
+            transform: "translateX(180%)", 
+            width: ".6rem",        
+          },
+        
+        },
+      },
+    }
+  },
+});
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
+    <SettingsList/>
   </ChakraProvider>
 )
