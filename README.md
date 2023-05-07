@@ -37,7 +37,7 @@ To create this assignment I used:
 In order to run the assignment:
 
 Clone the repository using:
-* git clone https://github.com/kslazykv/CityCard.git
+* git clone https://github.com/kslazykv/assignment_2.git
 
 Install all required libraries and dependencies:
 * npm install
